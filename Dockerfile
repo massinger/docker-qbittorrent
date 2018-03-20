@@ -1,4 +1,5 @@
-FROM alpine:3.7
+FROM resin/armhf-alpine
+RUN [ "cross-build-start" ]
 
 # Install required packages
 RUN apk add --no-cache \
@@ -89,3 +90,4 @@ EXPOSE 8080 6881
 
 ENTRYPOINT ["dumb-init", "/entrypoint.sh"]
 CMD ["qbittorrent-nox"]
+RUN [ "cross-build-end" ]
